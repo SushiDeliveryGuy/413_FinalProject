@@ -1,0 +1,63 @@
+#main {
+    color: white;
+    background-color: rgb(136, 9, 9);
+    font-size: 20pt;
+    text-align: center;
+    border-radius: 10px;
+    border-width: 15px;
+    padding: 10px;
+}
+
+#title {
+    color: white;
+    background-color: rgb(19, 19, 146);
+    padding: 15px;
+    margin-bottom: 0;
+}
+
+#infoBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+#info {
+    width: 300px;
+    border: 1; 
+    border-top-color: white;
+    border-left-color: white;
+    border-right-color: rgb(175, 175, 175);
+    border-bottom-color: rgb(154, 154, 154);
+}
+
+#loginBox {
+    
+    background-color: rgb(167, 35, 35);
+    width: 30%;
+    padding-bottom: 10px;
+}
+
+#loginBox > h3 {
+    padding-top: 10px;
+    padding-bottom: 55px;
+    text-align: center;
+    color: white;
+    text-decoration: underline;
+}
+
+#signIns {
+    color: white;
+    margin-left: 10px;
+}
+#signIns > div {
+    margin-top: 10px;
+}
+
+#email, #password {
+    margin-left: 10px;
+    width: 75%;
+}
+
+#signupButton {
+    color: rgb(0, 140, 255);
+}

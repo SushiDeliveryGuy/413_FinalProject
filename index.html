@@ -5,9 +5,7 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="stylesheets/site.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
@@ -16,9 +14,10 @@
 
 </head>
 <body>
-    <nav class="nav-wrapper bg-az-blue lighten-4" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" href="index.html" class="left brand-logo valign-wrapper">Main Page</a>
+    <nav>
+        <div id="main">
+            <a>Main Page</a>
+            <img src="" alt="UofA Logo">
         </div>
     </nav>
 
@@ -27,16 +26,26 @@
             <div class="row">
                 <div class="col s12">
                     <div class="card-panel">
-                        <h4 class="blue-text text-darken-4">Heart Rate Monitor</h4>
-                        <div class="collection">
-                            <button>Project Info</button>
+                        <h3 id="title">Heart Rate Monitor</h3>
+                        <div id="infoBox">
+                            <button id="info">˅ Project Info ˅</button>
                         </div>
                     </div>
-                    <div class="card-panel">
-                        <h4 class="blue-text text-darken-4">User Login</h4>
-                        <div class="collection">
-                            <a href="login.html" class="collection-item">Log-in </a>
-                            <a href="signup.html" class="collection-item">Sign-up </a>
+                    <div id="loginBox">
+                        <h3>Sign In</h3>
+                        <div id="signIns">
+                            <div>
+                                Email:
+                            </div>
+                            <input id="email" type="email">
+                            <div>
+                                Password:
+                            </div>
+                            <input id="password" type="password">
+                            <div style="text-align: right; margin-right: 10px">
+                                Sign up
+                                <a href="signup.html" id="signupButton">here</a>
+                            </div>
                         </div>
                     </div>
                 </div>
