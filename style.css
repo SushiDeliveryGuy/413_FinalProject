@@ -30,6 +30,11 @@
     border-bottom-color: rgb(154, 154, 154);
 }
 
+.infoText {
+
+}
+  
+
 #loginBox {
     
     background-color: rgb(167, 35, 35);
@@ -53,7 +58,7 @@
     margin-top: 10px;
 }
 
-#email, #password {
+#username, #password {
     margin-left: 10px;
     width: 75%;
 }
