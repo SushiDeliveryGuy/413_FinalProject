@@ -67,9 +67,9 @@ For logging in, use the following credentials,
 
 Listed below are the links for the server, video pitch, and demonstration videos for the project
 
-* **Server:** [https://](http://ec2-3-144-2-15.us-east-2.compute.amazonaws.com:3000)
-* **Pitch:** [https://]
-* **Demonstration:** [https://]
+* [Server](http://ec2-3-144-2-15.us-east-2.compute.amazonaws.com:3000)
+* [Pitch]()
+* [Demonstrations]()
 
 ## License
 
