@@ -14,21 +14,42 @@ tablet, and mobile device.
 -[Installation](#installation)
 -[Usage](#usage)
 -[Features](#features)
+-[Configuration](#configuration)
 -[Links](#links)
 -[License](#lincense)
 -[Contact](#contact)
 
 ## Installation
 
+For setting up the Heart Rate Monitor follow these steps below,
 
+# Clone the repository
+git clone https://https://github.com/SushiDeliveryGuy/413_FinalProject.git
+
+# Navigate to the project directory
+cd 413_FinalProject
+
+# Install dependencies
+npm install
 
 ## Usage
 
+For using the Heart Rate Monitor follow these steps below,
 
 
 ## Features
 
+* **IoT Integration:** Uses a low-cost IoT device in coordination with heart rate and oxygen sensors.
+* **Periodic Reminders:** Alerts the user throughout the day to take measurements at configurable intervals.
+* **Responsive Design:** The Heart Track application designed to provide same experience regardless of interface.
+* **Data Transmission and Monitoring:** Measurements are transmittied to the web application to be monitored by the viewer
 
+## Configuration
+
+The following can be configured by users,
+
+* **Measurement Timing:** Set the time of day the measurments will be taken
+* **Measurement Rate:** Define the frequency that the measurements should be taken at
 
 ## Links
 
