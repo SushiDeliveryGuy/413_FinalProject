@@ -26,6 +26,10 @@ tablet, and mobile device.
 
 
 
+## Features
+
+
+
 ## Links
 
 
@@ -36,9 +40,9 @@ tablet, and mobile device.
 
 ## Contact
 
-For inquries or feedback please reach out to any of these names through email:
+For inquries or feedback please reach out to any of these names through email,
 
-Samuel Kerns-----------> email@arizona.edu
-Adrian Corey-----------> email@arizona.edu
-Michael Cesar-Torres---> mcesartorres@arizona.edu
+Samuel Kerns: email@arizona.edu
+Adrian Corey: email@arizona.edu
+Michael Cesar-Torres: mcesartorres@arizona.edu
 
