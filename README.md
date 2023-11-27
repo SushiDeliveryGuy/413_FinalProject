@@ -23,13 +23,13 @@ tablet, and mobile device.
 
 For setting up the Heart Rate Monitor follow these steps below,
 
-# Clone the repository
+1. Clone the repository
 git clone https://https://github.com/SushiDeliveryGuy/413_FinalProject.git
 
-# Navigate to the project directory
+2. Navigate to the project directory
 cd 413_FinalProject
 
-# Install dependencies
+3. Install dependencies
 npm install
 
 ## Usage
