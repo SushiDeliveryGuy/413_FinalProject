@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2023 Michael A. Cesar-Torres, Samuel Kerns, Adrian Corey
+Copyright (c) 2023 Michael Cesar-Torres, Samuel Kerns, Adrian Corey
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
