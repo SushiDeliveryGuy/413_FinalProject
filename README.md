@@ -15,6 +15,7 @@ tablet, and mobile device.
 -[Usage](#usage)
 -[Features](#features)
 -[Configuration](#configuration)
+-[Credentials](#credentials)
 -[Links](#links)
 -[License](#lincense)
 -[Contact](#contact)
@@ -23,19 +24,23 @@ tablet, and mobile device.
 
 Setting up the Heart Rate Monitor should be done as follows,
 
-1. Clone the repository
+1. Clone the repository.
 `git clone https://https://github.com/SushiDeliveryGuy/413_FinalProject.git`
 
-2. Navigate to the project directory
+2. Navigate to the project directory.
 `cd 413_FinalProject`
 
-3. Install dependencies
+3. Install dependencies.
 `npm install`
 
 ## Usage
 
 For use of the Heart Rate Monitor follow these steps below,
 
+1. Ensure IoT device with heart rate and oxygen sensor are connected and configured.
+2. Run the web application `npm start`.
+3. Acces the application through preffered browser using link provided for the server and login using credentials provided.
+4. Measure and monitor your heart rate and blood oxygen saturation levels on the browser
 
 ## Features
 
@@ -51,13 +56,20 @@ The following can be configured by users,
 * **Measurement Timing:** Set the time of day the measurments will be taken
 * **Measurement Rate:** Define the frequency that the measurements should be taken at
 
+## Credentials
+
+For logging in, use the following credentials,
+
+**Username:**
+**Password:**
+
 ## Links
 
 Listed below are the links for the server, video pitch, and demonstration videos for the project
 
-* **Server:** https://
-* **Pitch:** https://
-* **Demonstration:** https://
+* **Server:** [https://](http://ec2-3-144-2-15.us-east-2.compute.amazonaws.com:3000)
+* **Pitch:** [https://]
+* **Demonstration:** [https://]
 
 ## License
 
