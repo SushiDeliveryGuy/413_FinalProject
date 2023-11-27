@@ -9,7 +9,7 @@ transmitted to the Heart Track web appplication for users to view. The time of d
 taken can be configured by the user. The web application uses a responsive desgin allowing for viewing on a desktop,
 tablet, and mobile device.
 
-## Table of Conetents
+## Table of Contents
 
 -[Installation](#installation)
 -[Usage](#usage)
