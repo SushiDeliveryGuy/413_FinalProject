@@ -86,7 +86,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 For inquries or feedback please reach out to any of these names through email,
 
-Samuel Kerns: s4k3@arizona.edu
+Samuel Kerns: email@arizona.edu
 Adrian Corey: email@arizona.edu
 Michael Cesar-Torres: mcesartorres@arizona.edu
 
