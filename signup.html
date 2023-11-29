@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Authentication Example Sign up</title>
+    <title>Authentication Example SignUp</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="javascripts/signup.js"></script>
+    <link href="signup.css" rel="stylesheet">
+    <script src="signup.js"></script>
+    
   </head>
   <body>
     <div class="container">
       <a href="index.html" class="left brand-logo valign-wrapper">Home</a>
       <a href="login.html" class="left brand-logo valign-wrapper">LogIn</a>
       <br/>
-      <h1>Token-based User authenticiation example - Sign Up</h1>
+      <h1>Heart Rate Monitor Sign-Up</h1>
       <br/>
       
-      <div>
+      <div id="submissions">
         <div>
           <label for="username">Username: </label>
           <input type="text" id="username" placeholder="Enter username" name="username">
@@ -24,6 +25,8 @@
         <div>
           <label for="password">Password: </label>
           <input type="password" id="password" placeholder="Enter password" name="password">
+        </div>
+        <div id="formErrors">
         </div>
         <br/>
         <button id="btnSignUp">SignUp</button>

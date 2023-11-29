@@ -5,7 +5,26 @@ function signup() {
     if ($('#username').val() === "") {
         window.alert("invalid username!");
         return;
+    } else {
+        let errorMsg = document.getElementById("formErrors");
+        errorMsg.innerHTML = "<ul>";
+        let regC = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$/;
+        if (!regC.test($('#username').val())) {
+            errorMsg.style.display = "block";
+            errorMsg.innerHTML += "<li>Invalid or missing email address.</li>";
+            $('#username').style.borderColor = "red";
+            $('#username').style.borderWidth = "2px";
+            $('#username').style.borderStyle = "solid";
+        } else {
+            $('#username').style.borderColor = "#aaa";
+            $('#username').style.borderWidth = "1px";
+            $('#username').style.borderStyle = "solid";
+            errorMsg.style.display = "none";
+        }
+        errorMsg.innerHTML += "</ul>";
     }
+
+
     if ($('#password').val() === "") {
         window.alert("invalid password");
         return;
@@ -45,3 +64,4 @@ function signup() {
 $(function () {
     $('#btnSignUp').click(signup);
 });
+

@@ -1,0 +1,48 @@
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(169, 169, 169);
+    background-color: rgb(19,19,146);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#submissions {
+    color: white;
+    width: 40%;
+    background-color: rgb(167, 35, 35);
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+
+
+
+
+#formErrors {
+    transform: translate(40px, 20px);
+    display: none;
+    color: red;
+    margin-bottom: 10px;
+
+}
+
+input {
+    transform: translate(1%, 0px);
+    border: 1px;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-radius: 5px 5px 5px 5px;
+    border-color: #aaa;
+    box-shadow: 1px 1px 5px black;
+}
+
+#btnSignUp {
+    color: white;
+    background-color: rgb(43, 124, 199);
+    width:40%;
+    transform: translate(70%, -10px);
+    box-shadow: 1px 1px 5px rgb(43, 124, 199);
+}
+
