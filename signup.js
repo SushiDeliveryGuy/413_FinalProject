@@ -12,9 +12,7 @@ function signup() {
         if (!regC.test($('#username').val())) {
             errorMsg.style.display = "block";
             errorMsg.innerHTML += "<li>Invalid or missing email address.</li>";
-            $('#username').style.borderColor = "red";
-            $('#username').style.borderWidth = "2px";
-            $('#username').style.borderStyle = "solid";
+            return;
         } else {
             $('#username').style.borderColor = "#aaa";
             $('#username').style.borderWidth = "1px";
@@ -63,5 +61,27 @@ function signup() {
 
 $(function () {
     $('#btnSignUp').click(signup);
+
+    $('#password').keyup(function() {
+        let errorMsg = document.getElementById("pwStrong");
+        errorMsg.innerHTML = "<ul>";
+        let regP = /^(?=.*[A-Za-z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        let regCase = /^(?=.*[A-Za-z])/;
+        let regChar = /(?=.*[@$!%*?&])/;
+        if (!regP.test($('#password').val())) {
+            errorMsg.style.display = "block";
+            errorMsg.innerHTML = "Weak Password";
+            //errorMsg.innerHTML += "<br><li>Password must be at least 8 characters<li>Contain at least one upper and one lower case letter<li>Contain at least one special character";
+            if (!regChar.test($('#password').val()))
+                errorMsg.style.color = "yellow";
+            if ($('#password').val().length < 8) {
+                errorMsg.style.color = "orange";
+            }
+            return;
+        } else {
+            errorMsg.style.display = "none";
+        }
+    });
+    
 });
 
