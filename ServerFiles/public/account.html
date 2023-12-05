@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HeartRate Monitor - ECE413 Fall2023</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="javascripts/jquery-3.2.1.min.js"></script>
+    <script src="javascripts/account.js"></script>
+    <link href="stylesheets/account.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="left brand-logo valign-wrapper">Home</a>
+      <div id="main">
+	  
+          <a>Heart Rate Monitor</a>
+          <img id="LOGO" src="images/UAlogo.png" alt="UofA Logo">
+      </div>
+  </nav>
+  <div class="container"></div>
+      <div class="section">
+          <div class="row">
+              <div class="col s12">
+                  <div class="card-panel">
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    <button id="logout">Sign Out</button>
+  <footer class="footer">
+      <div class="footer-text">
+          <div class="container">
+              &copy; 2023, Adrian Corey, Michael Cesar-Torres, Samuel Kerns
+              <span class="grey-text text-lighten-4 right">Electrical and Computer Engineering, University of Arizona</span>
+          </div>
+      </div>
+  </footer>
+    <script>
+      (function () {
+        if (!window.localStorage.getItem("token")) {
+          window.location.replace("index.html");
+        }
+      })();
+    </script>
+  </body>
+</html>

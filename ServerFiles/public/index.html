@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    
+    <script src="javascripts/jquery-3.2.1.min.js"></script>
+    <script src="javascripts/index.js"></script>
+    <script src="javascripts/login.js"></script>
+    <link href="stylesheets/style.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeartRate Monitor - ECE413 Fall2023</title>
+
+</head>
+<body>
+    <nav>
+        <div id="main">
+            <a>Heart Rate Monitor</a>
+            <img id="LOGO" src="images/UAlogo.png" alt="UofA Logo">
+        </div>
+    </nav>
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card-panel">
+                        <div id="infoBox">
+                            <div>
+                                <span><button id="info">? Project Info ?</button></span> 
+                            </div>
+                        </div>
+                        <div class="infoText">
+                            This webpage is designed to allow a user to log-in with their personalized credentials, 
+                            and observe summaries of heart rate statistics recieved from a registered and connected heart rate monitor device.
+                            <br><br>The combination webpage and device connection handler were written by Adrian Corey, Samuel Kerns, and Michael Cesar-Torres.
+                        </div>
+                    </div>
+                    <div id="loginBox">
+                        <h3>Sign In</h3>
+                        <div id="signIns">
+                            <div>
+                                Username:
+                            </div>
+                            <input id="username" type="text" placeholder="Enter username">
+                            <div>
+                                Password:
+                            </div>
+                            <input id="password" type="password" placeholder="Enter password">
+                            <div style="text-align: right; margin-right: 10px">
+                                Sign up
+                                <a href="signup.html" id="signupButton">here</a>
+                            </div>
+                        </div>
+                        <button id="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <div class="container">
+                &copy; 2023, Adrian Corey, Michael Cesar-Torres, Samuel Kerns
+                <span class="grey-text text-lighten-4 right">Electrical and Computer Engineering, University of Arizona</a>
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+</html> 

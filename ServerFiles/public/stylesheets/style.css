@@ -1,0 +1,113 @@
+#main {
+    color: white;
+    background-color: rgb(136, 9, 9);
+    font-size: 20pt;
+    text-align: center;
+    border-radius: 10px;
+    border-width: 15px;
+    padding: 10px;
+    padding-left: 40px;
+    display: flex;
+    align-items: center;
+}
+
+#LOGO {
+    display: flex;
+    margin-left: auto;
+        padding-right: 10px;
+}
+
+#infoBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+#info {
+    width: 300px;
+    border: 1; 
+    border-top-color: white;
+    border-left-color: white;
+    border-right-color: rgb(175, 175, 175);
+    border-bottom-color: rgb(154, 154, 154);
+    color: white;
+    background-color:rgb(33, 42, 205);
+}
+
+@media screen and (min-width: 800px) {
+.infoText {
+    width: 50%;
+}
+}
+@media screen and (max-width: 800px) {
+    .infoText {
+        width: 400px;
+    }
+}
+
+.infoText {
+    display: none;
+    background-color: rgb(255, 141, 141);
+    padding: 10px;
+    margin: auto;
+    word-wrap: normal;
+    font-size: 13pt;
+    border-radius: 10px;
+}
+  
+
+#loginBox {
+    
+    background-color: rgb(167, 35, 35);
+    width: 220px;
+    padding-bottom: 10px;
+}
+
+#loginBox > h3 {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    text-align: center;
+    color: white;
+    text-decoration: underline;
+}
+
+#signIns {
+    color: white;
+    margin-left: 10px;
+}
+#signIns > div {
+    margin-top: 10px;
+}
+
+#username, #password {
+    margin-left: 10px;
+    width: 75%;
+    border-style: solid;
+    border-radius: 5px 5px 5px 5px;
+    border-color: #aaa;
+    box-shadow: 1px 1px 5px black;
+}
+
+#signupButton {
+    color: rgb(0, 140, 255);
+}
+
+#submit {
+    color: white;
+    background-color: rgb(43, 124, 199);
+    width:40%;
+    margin-left: 10px;
+    box-shadow: 1px 1px 5px rgb(43, 124, 199);
+}
+
+.footer-text{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+    margin-bottom: 4px;
+}
