@@ -1,13 +1,13 @@
 // public/javascripts/account.js
 $(function (){
-    $('#registerDevice').on('click', function() {
-        // TODO: registering the device and saving the name into "ID"
+    // TODO: registering the device and saving the name into "ID"
+    // $('#registerDevice').on('click', function() {
+    //
+    //     deviceOptions(ID);
+    // });
 
-        deviceOptions(ID);
-    });
-
-    $('deviceID').onChange(/*TODO: function to update Weekly and Daily View for device*/);
-    $('calendar').onChange(/*TODO: function to update Weekly and Daily view for date change*/);
+    //$('deviceID').onChange(/*TODO: function to update Weekly and Daily View for device*/);
+    //$('calendar').onChange(/*TODO: function to update Weekly and Daily view for date change*/);
 
 
 
