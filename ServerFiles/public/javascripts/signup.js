@@ -3,13 +3,34 @@
 function signup() {
     // data validation
     if ($('#username').val() === "") {
-        window.alert("invalid username!");
-        return;
+    	window.alert("Invalid username! (Must be email)");
+    	return;
+    } else {
+    	let errorMsg = document.getElementById("formErrors");
+    	errorMsg.innerHTML = "<ul>";
+    	let regC = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$/;
+    	if (!regC.test($('#username').val())) {
+        	errorMsg.style.display = "block";
+        	errorMsg.innerHTML += "<li>Invalid email address.</li>";
+        	return;
+    	} else {
+        	$('#username').css({
+            	borderColor: "#aaa",
+            	borderWidth: "1px",
+            	borderStyle: "solid"
+        	});
+        	errorMsg.style.display = "none";
+    	}
+    	errorMsg.innerHTML += "</ul>";
     }
     if ($('#password').val() === "") {
         window.alert("invalid password");
         return;
     }
+    if ($('#pwStrong').className == 'password-weak') {
+	return;
+    }
+    
 
     let txdata = {
         username: $('#username').val(),
@@ -17,7 +38,7 @@ function signup() {
     };
 
     $.ajax({
-        url: 'http://ec2-3-133-159-168.us-east-2.compute.amazonaws.com:3000/users/signUp',
+        url: 'http://ec2-3-137-163-56.us-east-2.compute.amazonaws.com:3000/users/signUp',
         method: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(txdata),
@@ -26,17 +47,19 @@ function signup() {
     .done(function (data, textStatus, jqXHR) {
         //$('#rxData').html(JSON.stringify(data, null, 2));
         if (data.success) {
-            // after 1 second, move to "login.html"
+            // after 1/2 second, move to "login.html"
             setTimeout(function(){
                 window.location = "index.html";
             }, 500);
         }
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
-        //if (jqXHR.status == 404) {
-            //$('#rxData').html("Server could not be reached!!!");    
-        //}
-        //else $('#rxData').html(JSON.stringify(jqXHR, null, 2));
+        if (jqXHR.status == 404) {
+            window.alert("Server could not be reached");    
+        }
+        else if (jqXHR.status == 401) {
+	    window.alert("Username already exists");
+	}
     });
 }
 
@@ -44,16 +67,14 @@ function signup() {
 
 $(function () {
     $('#btnSignUp').click(signup);
-});
-function checkPasswordStrength() {
-    var password = document.getElementById("password").value;
-    var strengthIndicator = document.getElementById("passwordStrength");
 
-    // Reset previous indicator
-    strengthIndicator.innerHTML = '';
+    $('#password').keyup(function() {
+        let strengthIndicator = document.getElementById("pwStrong");
+	let password = $('#password').val();
+        strengthIndicator.innerHTML = '';
 
-    // Minimum length requirement
-    if (password.length < 8) {
+        // Minimum length requirement
+        if (password.length < 8) {
         strengthIndicator.innerHTML = 'Password should be at least 8 characters long.';
         strengthIndicator.className = 'password-weak';
         return;
@@ -70,7 +91,5 @@ function checkPasswordStrength() {
     // If all checks passed, the password is strong
     strengthIndicator.innerHTML = 'Strong password!';
     strengthIndicator.className = 'password-strength';
-}
-document.getElementById("signupForm").addEventListener("submit", function(event) {
-    var password = document.getElementById("password").value;
+    });
 });

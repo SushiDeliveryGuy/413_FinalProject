@@ -5,29 +5,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="javascripts/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particle-api-js/5/particle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="javascripts/account.js"></script>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link href="stylesheets/account.css" rel="stylesheet">
+
+    
   </head>
   <body>
     <nav>
-      <a href="index.html" class="left brand-logo valign-wrapper">Home</a>
       <div id="main">
 	  
           <a>Heart Rate Monitor</a>
           <img id="LOGO" src="images/UAlogo.png" alt="UofA Logo">
       </div>
+      <button id="logout">Sign Out</button>
   </nav>
-  <div class="container"></div>
-      <div class="section">
-          <div class="row">
-              <div class="col s12">
-                  <div class="card-panel">
-                  </div>
-              </div>
-          </div>
-      </div>
+  <h4>Change Device/Register Device</h4>
+  <div class="container" style="font-size: 12pt">
+    <label for="deviceID">Choose a Device:</label>
+    <select id="deviceID">
+      <option></option>
 
-    <button id="logout">Sign Out</button>
+    </select> <br>or
+    <br>Register a Device:
+    <input id="deviceRegister" placeholder="Enter a Device ID">
+    <button id="register">Register</button>
+    <br>or
+    <br>Remove Current Device:
+    <button id="remove">Remove</button>
+
+  </div>
+      <section id="graphs">
+          <div>
+    	<label for="dateSelector">Select Date:</label>
+    	<input type="date" id="dateSelector">
+    	<button onclick="loadData()">Load Data</button>
+  	</div>
+
+  	<div>
+    	<h2>Weekly Summary</h2>
+    	<p>Average Heart Rate: <span id="avgHeartRate">0</span></p>
+    	<p>Minimum Heart Rate: <span id="minHeartRate">0</span></p>
+    	<p>Maximum Heart Rate: <span id="maxHeartRate">0</span></p>
+  	</div>
+
+  	<div>
+    	<h2>Detailed Daily View</h2>
+    	<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+      	<div style="flex: 1; margin: 10px;">
+        	<canvas id="heartRateChart" width="400" height="200"></canvas>
+      	</div>
+      	<div style="flex: 1; margin: 10px;">
+        	<canvas id="oxygenLevelChart" width="400" height="200"></canvas>
+      	</div>
+    	</div>
+  	</div>
+      </section>
+	
+        <form id="changePasswordForm">
+        	<h4>Change Password</h4>
+        	<label for="newPassword">New Password:</label>
+        	<input type="password" id="newPassword"><br>
+
+        	<label for="confirmPassword">Confirm New Password:</label>
+        	<input type="password" id="confirmPassword"><br>
+		<div id="pwStrong"></div>
+
+        	<button type="button" id="changePassword">Change Password</button>
+    	</form>
+    
   <footer class="footer">
       <div class="footer-text">
           <div class="container">

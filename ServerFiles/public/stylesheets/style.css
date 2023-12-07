@@ -101,6 +101,21 @@
     box-shadow: 1px 1px 5px rgb(43, 124, 199);
 }
 
+.images{
+    display: flex;
+}
+
+.col {
+    flex: 33.33%;
+    padding: 10px;
+    margin-top: 80px;
+}
+
+#michael {
+    height: 150px;
+    width: 160px;
+}
+
 .footer-text{
     position: fixed;
     left: 0;

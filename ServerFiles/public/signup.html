@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="javascripts/jquery-3.2.1.min.js"></script>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link href="stylesheets/signup.css" rel="stylesheet">
     <script src="javascripts/signup.js"></script>
     
@@ -19,12 +20,17 @@
       <div id="submissions">
         <h4>Sign Up</h4>
         <div>
-       <label for="username">Username:</label>
-        <input type="text" id="username" required><br>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" oninput="checkPasswordStrength()" required>
-        <span id="passwordStrength" class="password-strength"></span><br>
+          <div>Username:</div>
+          <input type="text" id="username" placeholder="Enter email" name="username">
+        </div>
+        <div>
+          <div>Password:</div>
+          <input type="password" id="password" placeholder="Enter password" name="password">
+        </div>
+        <div id="pwStrong">
+          
+        </div>
+        
         <br/>
         <button id="btnSignUp">Sign Up</button>
       </div>

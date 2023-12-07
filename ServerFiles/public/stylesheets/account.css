@@ -18,23 +18,40 @@
 }
 
 #logout {
+    float: right;
     border-radius: 10px;
-    width: 100px;
+    margin-top: 5px;
+    width: 70px;
     color: white;
     background-color: blue;
-    position: fixed;
-    top: 100px;
-    right: 30px;
 }
-  
+
+h4 + div {
+    padding: 5px;
+    width: 40%;
+    color: white;
+    background-color: rgb(204, 32, 32);
+}
+
+#deviceID {
+    width: 100px;
+}
+
+#deviceRegister {
+    margin: 5px;
+}  
 
 .footer-text{
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    float: bottom;
     width: 100%;
     background-color: red;
     color: white;
     text-align: center;
     margin-bottom: 4px;
 }
+
+canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
