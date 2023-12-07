@@ -17,9 +17,9 @@ const mongoose = require("mongoose");
 mongoose.connect("mongodb://127.0.0.1/authen", { useNewUrlParser: true, useUnifiedTopology:true });
 
 const recordingSchema = new mongoose.Schema({
-    date:      {type: Number},
-    heartRate:  {type: Number},
-    deviceID: {type: Number},
+    date:      String,
+    heartRate:  String,
+    deviceID: String,
  });
 
 
@@ -122,8 +122,10 @@ app.get('/lab/status', async function (req, res) {
 app.post('/lab/register', async function (req, res) {
   const { date, heartRate, deviceID } = req.body;
 
-  if (isNaN(date) || !heartRate || isNaN(deviceID)) {
+  if (!date || !heartRate || !deviceID) {
+    console.log(req.body);
     return res.status(400).json({ error: 'Date, heartRate and ID are required.' });
+    
   }
   
   try {
@@ -175,7 +177,7 @@ app.post("/users/logIn", function(req, res){
       return;
    }
    // Get user from the database
-   User.findOne({user: req.body.username}, function(err, user) {
+   User.findOne({username: req.body.username}, function(err, user) {
       if (err) {
          res.status(400).send(err);
       }
