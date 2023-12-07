@@ -54,9 +54,7 @@ h4 + div {
 
 
 .footer-text{
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    float: bottom;
     width: 100%;
     background-color: red;
     color: white;
