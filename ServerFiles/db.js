@@ -194,11 +194,83 @@ app.post("/users/logIn", function(req, res){
                   console.log("User's LastAccess has been updated.");
                });
                // Send back a token that contains the user's username
-               res.status(201).json({ success:true, token: token, msg: "Login success" });
+               res.status(201).json({ success:true, token: token, username: user.username,devices: user.devices, msg: "Login success" });
          }
          else {
             res.status(401).json({ success:false, msg: "Username or password invalid."});
          }
+      }
+   });
+});
+
+app.put("/users/changePassword", function(req, res) {
+   if (!req.body.username || !req.body.newPassword) {
+      res.status(400).json({ error: "Missing username and/or new password" });
+      return;
+   }
+
+   
+   // Get user from the database
+   User.findOne({ username: req.body.username }, function(err, user) {
+      if (err) {
+         res.status(500).send(err);
+      } else if (!user) {
+         // Username not in the database
+         res.status(401).json({ error: "User not found" });
+      } else {
+         // Update the password
+         const newPasswordHash = bcrypt.hashSync(req.body.newPassword, 10);
+         user.passwordHash = newPasswordHash;
+
+         user.save(function(err, updatedUser) {
+            if (err) {
+               res.status(500).json({ error: "Internal Server Error" });
+            } else {
+               res.status(200).json({ success: true, msg: "Password changed successfully" });
+            }
+         });
+      }
+   });
+});
+
+app.put("/users/updateDevices", function(req, res) {
+   if (!req.body.username) {
+      res.status(400).json({ error: "Missing username" });
+      return;
+   }
+
+   
+   // Get user from the database
+   User.findOne({ username: req.body.username }, function(err, user) {
+      if (err) {
+         res.status(500).send(err);
+      } else if (!user) {
+         // Username not in the database
+         res.status(401).json({ error: "User not found" });
+      } else {
+         // Check if a device needs to be added
+         if (req.body.addDevice) {
+            // Add the new device to the end of the devices string with a comma
+            user.devices = user.devices ? user.devices + ',' + req.body.addDevice : req.body.addDevice;
+         }
+
+         // Check if a device needs to be deleted
+         if (req.body.deleteDevice) {
+            // Remove the specified device from the devices string
+            user.devices = user.devices.replace(new RegExp(req.body.deleteDevice + ',?', 'g'), '');
+         }
+
+         user.save(function(err, updatedUser) {
+            if (err) {
+               res.status(500).json({ error: "Internal Server Error" });
+            } else {
+               res.status(200).json({
+                  success: true,
+                  msg: "Devices updated successfully",
+                  devices: updatedUser.devices.split(',') // Convert the devices string to an array
+               });
+            }
+         });
       }
    });
 });
