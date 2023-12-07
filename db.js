@@ -199,6 +199,42 @@ app.post("/users/logIn", function(req, res){
       }
    });
 });
+// Endpoint to handle POST requests for changing passwords
+app.post("/users/changePassword", function(req, res){
+  const { username, currentPassword, newPassword } = req.body;
+
+  if (!username || !currentPassword || !newPassword) {
+      res.status(400).json({ error: "Missing username, current password, or new password" });
+      return;
+  }
+
+  // Find the user in the database
+  User.findOne({ username: username }, function(err, user) {
+      if (err) {
+          res.status(500).json({ error: "Internal Server Error" });
+      } else if (!user) {
+          res.status(401).json({ error: "User not found" });
+      } else {
+          // Check if the current password is correct
+          if (bcrypt.compareSync(currentPassword, user.passwordHash)) {
+              // Update the password
+              user.passwordHash = bcrypt.hashSync(newPassword, 10);
+
+              // Save the updated user
+              user.save(function(err, updatedUser) {
+                  if (err) {
+                      res.status(500).json({ error: "Internal Server Error" });
+                  } else {
+                      res.status(200).json({ success: true, msg: "Password changed successfully" });
+                  }
+              });
+          } else {
+              res.status(401).json({ error: "Current password is incorrect" });
+          }
+      }
+  });
+});
+
 
 
 app.listen(3000);
