@@ -15,10 +15,27 @@
           <img id="LOGO" src="UAlogo.png" alt="UofA Logo">
       </div>
       <button id="logout">Sign Out</button>
+      <h4>Change Password</h4>
+      <form id="changePasswordForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required><br>
+
+        <label for="currentPassword">Current Password:</label>
+        <input type="password" id="currentPassword" required><br>
+
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" required><br>
+
+        <label for="confirmPassword">Confirm New Password:</label>
+        <input type="password" id="confirmPassword" required><br>
+
+        <button type="button" onclick="changePassword()">Change Password</button>
+    </form>
     </nav>
   <!-- PLACE CALENDAR DATE SELECTION THING HERE-->
 
   <!-- IM NOT MAKING ANOTHER ONE SINCE YOU HAVE IT ALREADY -Sam -->
+  <h4>Change Device/Register Device</h4>
   <div class="container" style="font-size: 12pt">
     <label for="deviceID">Choose a Device:</label>
     <select id="deviceID">
