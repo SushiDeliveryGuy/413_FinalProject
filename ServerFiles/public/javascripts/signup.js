@@ -45,3 +45,32 @@ function signup() {
 $(function () {
     $('#btnSignUp').click(signup);
 });
+function checkPasswordStrength() {
+    var password = document.getElementById("password").value;
+    var strengthIndicator = document.getElementById("passwordStrength");
+
+    // Reset previous indicator
+    strengthIndicator.innerHTML = '';
+
+    // Minimum length requirement
+    if (password.length < 8) {
+        strengthIndicator.innerHTML = 'Password should be at least 8 characters long.';
+        strengthIndicator.className = 'password-weak';
+        return;
+    }
+
+    // Check for special characters
+    var specialCharacterRegex = /[!@#$%^&*(),.?":{}|<>]/;
+    if (!specialCharacterRegex.test(password)) {
+        strengthIndicator.innerHTML = 'Password should contain at least one special character.';
+        strengthIndicator.className = 'password-weak';
+        return;
+    }
+
+    // If all checks passed, the password is strong
+    strengthIndicator.innerHTML = 'Strong password!';
+    strengthIndicator.className = 'password-strength';
+}
+document.getElementById("signupForm").addEventListener("submit", function(event) {
+    var password = document.getElementById("password").value;
+});
