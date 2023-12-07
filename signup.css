@@ -13,12 +13,25 @@ h1 {
     margin-top: 0;
 }
 
-#submissions {
-    color: white;
-    width: 40%;
-    background-color: rgb(167, 35, 35);
-    padding-top: 10px;
-    padding-left: 10px;
+
+@media screen and (min-width: 800px) {
+    #submissions {
+        color: white;
+        width: 320px;
+        background-color: rgb(167, 35, 35);
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #submissions {
+        color: white;
+        width: 40%;
+        background-color: rgb(167, 35, 35);
+        padding-top: 10px;
+        padding-left: 10px;
+    }   
 }
 
 #submissions > h4 {
