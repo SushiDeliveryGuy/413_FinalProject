@@ -19,17 +19,12 @@
       <div id="submissions">
         <h4>Sign Up</h4>
         <div>
-          <div>Username:</div>
-          <input type="text" id="username" placeholder="Enter email" name="username">
-        </div>
-        <div>
-          <div>Password:</div>
-          <input type="password" id="password" placeholder="Enter password" name="password">
-        </div>
-        <div id="pwStrong">
-          
-        </div>
-        
+       <label for="username">Username:</label>
+        <input type="text" id="username" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" oninput="checkPasswordStrength()" required>
+        <span id="passwordStrength" class="password-strength"></span><br>
         <br/>
         <button id="btnSignUp">Sign Up</button>
       </div>
