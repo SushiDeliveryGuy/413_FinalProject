@@ -1,3 +1,5 @@
+
+
 #main {
     color: white;
     background-color: rgb(136, 9, 9);
@@ -21,8 +23,10 @@
 
 #infoBox {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     padding-top: 10px;
     padding-bottom: 5px;
 }
@@ -57,6 +61,23 @@
     font-size: 13pt;
     border-radius: 10px;
 }
+
+.images{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col {
+    padding: 15px;
+}
+
+#pic {
+    width: 160px;
+    max-width: 100%;
+    height: auto;
+}
+
   
 
 #loginBox {
@@ -103,28 +124,15 @@
     box-shadow: 1px 1px 5px rgb(43, 124, 199);
 }
 
-.images{
-    display: flex;
-    transform: translate(0,100%);
-}
-
-.col {
-    flex: 33.33%;
-    padding: 10px;
-}
-
-#michael {
-    height: 150px;
-    width: 160px;
-}
 
 .footer-text{
     position: fixed;
-    left: 0;
     bottom: 0;
+    box-sizing: border-box;
     width: 100%;
     background-color: red;
     color: white;
     text-align: center;
-    margin-bottom: 4px;
+    margin-left: -10px;
+    margin-right: -10px;
 }
