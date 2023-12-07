@@ -26,9 +26,19 @@
     background-color: blue;
 }
 
+h4 + div {
+    padding: 5px;
+    width: 40%;
+    color: white;
+    background-color: rgb(204, 32, 32);
+}
 
 #deviceID {
     width: 100px;
+}
+
+#deviceRegister {
+    margin: 5px;
 }
   
 #graphs > div {
@@ -40,10 +50,6 @@
     background-color: rgb(180, 180, 180);
     margin-bottom: 50px;
 }
-
-
-
-
 
 
 
