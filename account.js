@@ -63,12 +63,12 @@ function changePassword() {
     xhr.send(data);
 }
 
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+$(document).ready(function() {
+    $('a[href^="#"]').on('click', function(e) {
         e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        var target = this.hash;
+        $('html, body').animate({
+            scrollTop: $(target).offset().top
+        }, 800, 'swing');
     });
 });
