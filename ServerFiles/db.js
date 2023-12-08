@@ -53,7 +53,7 @@ async function clearDatabase() {
 }
 
 // Call the function to clear the database
-clearDatabase();
+//clearDatabase();
 
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -111,6 +111,9 @@ app.get('/lab/status', async function (req, res) {
     }
 
         
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+    res.setHeader('Pragma', 'no-cache');
+
     res.status(200).json(entries);
   } catch (error) {
     console.error(error);
@@ -120,11 +123,11 @@ app.get('/lab/status', async function (req, res) {
 
 // Endpoint to handle POST requests to /lab/register
 app.post('/lab/register', async function (req, res) {
-  const { date, heartRate, deviceID } = req.body;
+  const { date, heartRate, deviceID, apikey } = req.body;
 
-  if (!date || !heartRate || !deviceID) {
+  if (!date || !heartRate || !deviceID || !apikey) {
     console.log(req.body);
-    return res.status(400).json({ error: 'Date, heartRate and ID are required.' });
+    return res.status(400).json({ error: 'Date, heartRate, ID, and apikey are required.' });
     
   }
   

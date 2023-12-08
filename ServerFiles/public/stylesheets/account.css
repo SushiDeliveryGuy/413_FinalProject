@@ -17,6 +17,15 @@
         padding-right: 10px;
 }
 
+#navigation > a{
+    margin: 5px;
+    background-color: rgb(238, 84, 84);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 14px 16px;
+    display: inline-block;
+}
+
 #logout {
     float: right;
     border-radius: 10px;

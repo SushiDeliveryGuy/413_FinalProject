@@ -47,7 +47,7 @@ $(function (){
     strengthIndicator.className = 'password-strength';
     });
 
-
+    $('#submit').click(sendDataToParticle);
     $('#register').click(registerDevice);
     $('#remove').click(removeDevice);
     $('#changePassword').click(changePassword);
@@ -191,8 +191,8 @@ function changePassword() {
     })
     .done(function (data, textStatus, jqXHR) {
         if (data.success) {
-           password.val('');
-	   confirmPassword.val('');
+           $('#newPassword').val('');
+	   $('#confirmPassword').val('');
 	   window.alert('Success, password changed');
         }
     })
@@ -219,145 +219,209 @@ function deviceOptions(deviceName) {
     list.innerHTML += "<option>" + deviceName + "</option>";
 }
 
-const sampleData = {
-      "2023-12-6": [
-        { time: "09:00", heartRate: 80, oxygenLevel: 98 },
-        { time: "12:00", heartRate: 95, oxygenLevel: 96 },
-        { time: "15:00", heartRate: 75, oxygenLevel: 99 },
-        // Add more data for the day
-      ],
-      // Add more days as needed
-    };
 
-    // Chart configuration
-    const chartConfig = {
-      type: 'line',
-      options: {
-        scales: {
-          x: { type: 'linear', position: 'bottom' },
-          y: { beginAtZero: true }
-        },
-      },
-    };
-
+    
     // Function to load data for the selected date
 
     function loadData() {
-    const selectedDateStr = document.getElementById("dateSelector").value;
-    const selectedDate = new Date(selectedDateStr);
-    const selectedDevice = document.getElementById("deviceID").value;
+  const selectedDateStr = document.getElementById("dateSelector").value;
+  const selectedDate = new Date(selectedDateStr);
+  const selectedDevice = document.getElementById("deviceID").value;
 
-    // Make an AJAX request to fetch the data for the selected device and date
-    $.ajax({
-        url: 'http://ec2-3-137-163-56.us-east-2.compute.amazonaws.com:3000/lab/status',
-        method: 'GET',
-        data: {
-            deviceID: selectedDevice
-        },
-        dataType: 'json'
-    })
-    .done(function(data, textStatus, jqXHR) {
-        // Check if data is available for the selected device
-        if (data.length === 0) {
-            window.alert("No data available for the selected device.");
-            return;
-        }
+  // Make an AJAX request to fetch the data for the selected device and date
+  $.ajax({
+    url: 'http://ec2-3-137-163-56.us-east-2.compute.amazonaws.com:3000/lab/status',
+    method: 'GET',
+    data: {
+      deviceID: selectedDevice
+    },
+    dataType: 'json'
+  })
+  .done(function(data, textStatus, jqXHR) {
+    // Check if data is available for the selected device
+    if (data.length === 0) {
+      window.alert("No data available for the selected device.");
+      return;
+    }
 
-        // Filter the data for the selected date
-        const dailyData = data.filter(entry => {
-            const entryDate = new Date(entry.date);
-            return entryDate.toISOString().split('T')[0] === selectedDate.toISOString().split('T')[0];
-        });
-
-        // Update detailed daily view charts
-        updateChart('heartRateChart', 'Heart Rate', dailyData.map(entry => ({ x: entry.time, y: getHeartRate(entry.heartRate) })));
-        updateChart('oxygenLevelChart', 'Oxygen Level', dailyData.map(entry => ({ x: entry.time, y: getOxygenLevel(entry.heartRate) })));
-
-        // Calculate and update weekly summary
-        const weeklyData = getWeeklyData(selectedDate, data);
-        document.getElementById("avgHeartRate").textContent = calculateAverage(weeklyData, 'heartRate');
-        document.getElementById("minHeartRate").textContent = calculateMin(weeklyData, 'heartRate');
-        document.getElementById("maxHeartRate").textContent = calculateMax(weeklyData, 'heartRate');
-    })
-    .fail(function(jqXHR, textStatus, errorThrown) {
-        if (jqXHR.status == 404) {
-            window.alert("Server could not be reached");
-        } else {
-            window.alert("Error fetching data from the server");
-        }
+    
+    const selectedDayData = data.filter(entry => {
+      const entryDate = new Date(entry.date);
+      return (
+        entryDate.getDate() - 1 === selectedDate.getDate() &&
+        entryDate.getMonth() === selectedDate.getMonth() &&
+        entryDate.getFullYear() === selectedDate.getFullYear()
+      );
     });
+
+    // Extract time strings and measurement values
+    const timeStrings = selectedDayData.map(entry => {
+  const entryDate = new Date(entry.date);
+  const totalSeconds = entryDate.getHours() * 3600 + entryDate.getMinutes() * 60 + entryDate.getSeconds();
+  return totalSeconds / (60*60);
+});
+	
+    const heartRateValues = data.map(entry => getHeartRate(entry.heartRate)).filter(value => value >= 0);
+
+    // Filter out data points below zero for oxygen level
+    const oxygenLevelValues = data.map(entry => getOxygenLevel(entry.heartRate)).filter(value => value >= 0);
+
+    updateChart('heartRateChart', 'Heart Rate', timeStrings, heartRateValues);
+    updateChart('oxygenLevelChart', 'Oxygen Level', timeStrings, oxygenLevelValues);
+
+    // Calculate and update weekly summary
+    const weeklyData = getWeeklyData(selectedDate, data);
+	
+    document.getElementById("avgHeartRate").textContent = calculateAverage(weeklyData);
+    document.getElementById("minHeartRate").textContent = calculateMin(weeklyData);
+    document.getElementById("maxHeartRate").textContent = calculateMax(weeklyData);
+  })
+  .fail(function(jqXHR, textStatus, errorThrown) {
+    if (jqXHR.status == 404) {
+      window.alert("Server could not be reached");
+    } else {
+      window.alert("Error fetching data from the server");
+    }
+  });
 }
+
+// Chart configuration
+const chartConfig = {
+  type: 'line',
+  data: {
+    labels: [],  // This array will contain your time of day strings
+    datasets: [
+      {
+        label: 'Heart Rate',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        data: [],  // This array will contain your heart rate values
+        fill: false,
+      },
+      {
+        label: 'Oxygen Level',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        data: [],  // This array will contain your oxygen level values
+        fill: false,
+      },
+    ],
+  },
+  options: {
+    scales: {
+      x: {
+        type: 'linear',
+        position: 'bottom',
+        title: {
+          display: true,
+          text: 'Time (Hours)' // Add your x-axis label here
+        }
+      },
+      y: { beginAtZero: true },
+    },
+  },
+};
+
+// Function to update the chart
+function updateChart(chartId, label, timeStrings, measurementValues) {
+  
+  const ctx = document.getElementById(chartId).getContext('2d');
+  const chartData = chartConfig.data.datasets.find(dataset => dataset.label === label);
+
+  // Update chart data
+  chartData.data = measurementValues;
+  chartConfig.data.labels = timeStrings;
+
+  // Get the combined measurement values from all datasets
+  const allMeasurementValues = chartConfig.data.datasets
+    .flatMap(dataset => dataset.data)
+    .filter(value => !isNaN(value));
+
+  // Get the minimum and maximum values for the y-axis from all datasets
+  const minValue = Math.min(...allMeasurementValues);
+  const maxValue = Math.max(...allMeasurementValues);
+
+  // Update chart options for y-axis
+  chartConfig.options.scales.y.min = minValue - 5;  // Adjust for better visualization
+  chartConfig.options.scales.y.max = maxValue + 5;  // Adjust for better visualization
+
+  // Create or update the chart
+  if (window.myChart) {
+    window.myChart.update();
+  } else {
+    window.myChart = new Chart(ctx, chartConfig);
+  }
+}
+
 // Function to extract heart rate from the combined field
 function getHeartRate(combinedData) {
-    const [heartRate] = combinedData.split(',');
-    return parseFloat(heartRate.trim());
+    const values = combinedData.split(',');
+    return values.length > 0 ? parseInt(values[0], 10) || 0 : 0;
 }
 
-// Function to extract oxygen level from the combined field
 function getOxygenLevel(combinedData) {
-    const [, oxygenLevel] = combinedData.split(',');
-    return parseFloat(oxygenLevel.trim());
+    const values = combinedData.split(',');
+    return values.length > 1 ? parseInt(values[1], 10) || 0 : 0;
 }
-    // Function to update a chart
-    function updateChart(canvasId, label, data) {
-      const ctx = document.getElementById(canvasId).getContext('2d');
-      new Chart(ctx, {
-        ...chartConfig,
-        data: {
-          labels: data.map(entry => entry.x),
-          datasets: [{
-            label: label,
-            data: data,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1,
-            fill: false,
-          }],
-        },
-      });
-    }
 
-    // Function to get weekly data
-    function getWeeklyData(selectedDate) {
-      const selectedDateObj = new Date(selectedDate);
-      const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-      const endDate = new Date(selectedDateObj.getTime() + 6 * oneDay);
+// Function to get weekly data
+function getWeeklyData(selectedDate, data) {
+  const selectedDateObj = new Date(selectedDate);
+  
+  const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+  const endDate = new Date(selectedDateObj.getTime() - 7 * oneDay);
 
-      let weeklyData = [];
-      for (let date = selectedDateObj; date <= endDate; date.setDate(date.getDate() + 1)) {
-        const dateStr = date.toISOString().split('T')[0];
-        weeklyData = weeklyData.concat(sampleData[dateStr] || []);
-      }
+  let weeklyData = [];
+  for (let date = endDate; date <= selectedDateObj; date.setDate(date.getDate() + 1)) {
+    
+    const dateStr = date.toISOString().split('T')[0];
+    const dailyData = data.filter(entry => entry.date.split('T')[0] === dateStr);
+	
+    const filteredData = dailyData.filter(entry => {
+            const hr = getHeartRate(entry.heartRate);
+            const ol = getOxygenLevel(entry.heartRate);
+            return hr >= 0 && ol >= 0;
+        });
 
-      return weeklyData;
-    }
+        weeklyData = weeklyData.concat(filteredData);
+  }
 
-    // Function to calculate average
-    function calculateAverage(data, property) {
-      const values = data.map(entry => entry[property]);
-      const sum = values.reduce((acc, val) => acc + val, 0);
-      return (sum / values.length).toFixed(2);
-    }
+  return weeklyData;
+}
+    function calculateAverage(data) {
+  const values = data.map(entry => getHeartRate(entry.heartRate)).filter(value => !isNaN(value));
+  if (values.length === 0) return 'N/A';
+  
+  const sum = values.reduce((acc, val) => acc + val, 0);
+  return (sum / values.length).toFixed(2);
+}
 
-    // Function to calculate minimum
-    function calculateMin(data, property) {
-      const values = data.map(entry => entry[property]);
-      return Math.min(...values);
-    }
+// Function to calculate minimum
+function calculateMin(data) {
+  const values = data.map(entry => getHeartRate(entry.heartRate)).filter(value => !isNaN(value));
+  if (values.length === 0) return 'N/A';
+  
+  return Math.min(...values);
+}
 
-    // Function to calculate maximum
-    function calculateMax(data, property) {
-      const values = data.map(entry => entry[property]);
-      return Math.max(...values);
-    }
+// Function to calculate maximum
+function calculateMax(data, property) {
+  const values = data.map(entry => getHeartRate(entry.heartRate)).filter(value => !isNaN(value));
+  if (values.length === 0) return 'N/A';
+  
+  return Math.max(...values);
+}
 
 var particle = new Particle();
 
 // Function to send data to the Particle.function
-function sendDataToParticle(data) {
-  var functionName = "webAppFunction";
-  var argument = data;
+function sendDataToParticle() {
+  var functionName = "setMeasurementParameters";
+  var dataStr = `${$('#start').val()}-${$('#end').val()},${$('#freq').val()}`;
+  console.log(dataStr);
+  var argument = dataStr;
 
-  particle.callFunction({ deviceId: 'YOUR_DEVICE_ID', name: functionName, argument: argument, auth: 'YOUR_ACCESS_TOKEN' })
+  particle.callFunction({ deviceId: '0a10aced202194944a049464', name: functionName, argument: argument, auth: 'cc248c5512bd5b43b36ef2883d7047653bf5d94e' })
     .then(function(data) {
       console.log('Function called successfully:', data);
     }, function(err) {
@@ -366,7 +430,17 @@ function sendDataToParticle(data) {
 }
 
 // Example: Call sendDataToParticle when a button is clicked
-document.getElementById('sendButton').addEventListener('click', function() {
-  var userInput = document.getElementById('userInput').value;
-  sendDataToParticle(userInput);
+//document.getElementById('sendButton').addEventListener('click', function() {
+  //var userInput = document.getElementById('userInput').value;
+  //sendDataToParticle(userInput);
+//});
+
+$(document).ready(function() {
+    $('a[href^="#"]').on('click', function(e) {
+        e.preventDefault();
+        var target = this.hash;
+        $('html, body').animate({
+            scrollTop: $(target).offset().top
+        }, 800, 'swing');
+    });
 });

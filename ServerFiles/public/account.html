@@ -20,6 +20,11 @@
           <a>Heart Rate Monitor</a>
           <img id="LOGO" src="images/UAlogo.png" alt="UofA Logo">
       </div>
+	 <nav id="navigation">
+        <a href="#deviceID">Device Settings</a> 
+        <a href="#graphs">Graphs</a> <!-- THE href MUST BE CHANGED TO DATA VIEW ID-->
+        <a href="#changePasswordForm">Password Settings</a>
+      </nav>
       <button id="logout">Sign Out</button>
   </nav>
   <h4>Change Device/Register Device</h4>
@@ -36,6 +41,14 @@
     <br>Remove Current Device:
     <button id="remove">Remove</button>
 
+  </div>
+  <br><br>
+  <div id="interval">
+    Start Time: &nbsp;End Time:&nbsp;&ensp;Frequency (minutes):<br>
+    <input id="start" value="00:00">&nbsp;
+    <input id="end" value="24:00">&nbsp;
+    <input id="freq" value="30">
+    <br><button id="submit">Submit</button>
   </div>
       <section id="graphs">
           <div>
@@ -63,7 +76,8 @@
     	</div>
   	</div>
       </section>
-	
+<div id="dataContainer"></div>
+		
         <form id="changePasswordForm">
         	<h4>Change Password</h4>
         	<label for="newPassword">New Password:</label>
