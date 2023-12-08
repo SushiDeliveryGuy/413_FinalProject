@@ -26,12 +26,25 @@
     background-color: blue;
 }
 
-h4 + div {
-    padding: 5px;
-    width: 40%;
-    color: white;
-    background-color: rgb(204, 32, 32);
+
+/* NEW CODE BELOW*/
+@media screen and (min-width: 700px) {
+    h4 + div {
+        padding: 5px;
+        width: 40%;
+        color: white;
+        background-color: rgb(204, 32, 32);
+    }
 }
+@media screen and (max-width: 700px) {
+    h4 + div {
+        padding: 5px;
+        width: 280px;
+        color: white;
+        background-color: rgb(204, 32, 32);
+    }
+}
+/* NEW CODE ABOVE*/
 
 #deviceID {
     width: 100px;
@@ -40,6 +53,23 @@ h4 + div {
 #deviceRegister {
     margin: 5px;
 }
+
+/* NEW CODE BELOW*/
+#start {
+    width: 63px;
+}
+#end {
+    width: 63px;
+}
+#freq {
+    width: 70px;
+}
+#submit {
+    margin-top:4px;
+}
+/* NEW CODE ABOVE */
+
+
   
 #graphs > div {
     border: solid;
