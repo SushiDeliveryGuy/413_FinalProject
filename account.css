@@ -26,8 +26,18 @@
     background-color: blue;
 }
 
-
 /* NEW CODE BELOW*/
+#navigation > a{
+    margin: 5px;
+    background-color: rgb(238, 84, 84);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 14px 16px;
+    display: inline-block;
+}
+/* NEW CODE ABOVE*/
+
+
 @media screen and (min-width: 700px) {
     h4 + div {
         padding: 5px;
@@ -44,7 +54,6 @@
         background-color: rgb(204, 32, 32);
     }
 }
-/* NEW CODE ABOVE*/
 
 #deviceID {
     width: 100px;

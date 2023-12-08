@@ -10,10 +10,18 @@
   </head>
   <body>
     <nav>
+      
       <div id="main">
           <a>Heart Rate Monitor Measurements</a>
           <img id="LOGO" src="UAlogo.png" alt="UofA Logo">
       </div>
+<!-- NEW CODE BELOW -->
+      <nav id="navigation">
+        <a href="#deviceID">Device Settings</a> 
+        <a href="#graphs">Graphs</a> <!-- THE href MUST BE CHANGED TO DATA VIEW ID-->
+        <a href="#changePasswordForm">Password Settings</a>
+      </nav>
+<!-- NEW CODE ABOVE -->
       <button id="logout">Sign Out</button>
       <h4>Change Password</h4>
       <form id="changePasswordForm">
@@ -49,7 +57,6 @@
     <input id="removeDevice" placeholder="Enter a Device">
     <button id="remove">Remove</button>
   </div>
-  <!-- NEW CODE BELOW -->
   <br><br>
   <div id="interval">
     Start Time: &nbsp;End Time:&nbsp;&ensp;Frequency (minutes):<br>
@@ -58,7 +65,6 @@
     <input id="freq" value="30">
     <br><button id="submit">Submit</button>
   </div>
-  <!-- NEW CODE ABOVE -->
       <section id="graphs">
           <h3>Weekly View</h3>
           <div class="table"></div>
