@@ -26,11 +26,33 @@
     background-color: blue;
 }
 
-h4 + div {
-    padding: 5px;
-    width: 40%;
-    color: white;
-    background-color: rgb(204, 32, 32);
+/* NEW CODE BELOW*/
+#navigation > a{
+    margin: 5px;
+    background-color: rgb(238, 84, 84);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 14px 16px;
+    display: inline-block;
+}
+/* NEW CODE ABOVE*/
+
+
+@media screen and (min-width: 700px) {
+    h4 + div {
+        padding: 5px;
+        width: 40%;
+        color: white;
+        background-color: rgb(204, 32, 32);
+    }
+}
+@media screen and (max-width: 700px) {
+    h4 + div {
+        padding: 5px;
+        width: 280px;
+        color: white;
+        background-color: rgb(204, 32, 32);
+    }
 }
 
 #deviceID {
@@ -40,6 +62,23 @@ h4 + div {
 #deviceRegister {
     margin: 5px;
 }
+
+/* NEW CODE BELOW*/
+#start {
+    width: 63px;
+}
+#end {
+    width: 63px;
+}
+#freq {
+    width: 70px;
+}
+#submit {
+    margin-top:4px;
+}
+/* NEW CODE ABOVE */
+
+
   
 #graphs > div {
     border: solid;
