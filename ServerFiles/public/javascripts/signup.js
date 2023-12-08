@@ -27,7 +27,7 @@ function signup() {
         window.alert("invalid password");
         return;
     }
-    if ($('#pwStrong').className == 'password-weak') {
+    if ($('#pwStrong').className === 'password-weak') {
 	return;
     }
     

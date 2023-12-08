@@ -261,10 +261,10 @@ function deviceOptions(deviceName) {
   return totalSeconds / (60*60);
 });
 	
-    const heartRateValues = data.map(entry => getHeartRate(entry.heartRate)).filter(value => value >= 0);
+    const heartRateValues = data.map(entry => getHeartRate(entry.heartRate)).filter(value => value >= 20);
 
     // Filter out data points below zero for oxygen level
-    const oxygenLevelValues = data.map(entry => getOxygenLevel(entry.heartRate)).filter(value => value >= 0);
+    const oxygenLevelValues = data.map(entry => getOxygenLevel(entry.heartRate)).filter(value => value >= 20);
 
     updateChart('heartRateChart', 'Heart Rate', timeStrings, heartRateValues);
     updateChart('oxygenLevelChart', 'Oxygen Level', timeStrings, oxygenLevelValues);
