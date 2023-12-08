@@ -43,7 +43,7 @@ For use of the Heart Rate Monitor follow these steps below,
 1. Ensure IoT device with heart rate and oxygen sensor are connected and configured.
 2. Run the web application.
    
-    `npm start`
+    `node db.js`
    
 4. Acces the application through preffered browser using link provided for the server and login using credentials provided.
 5. Measure and monitor your heart rate and blood oxygen saturation levels on the browser.
@@ -66,15 +66,15 @@ The following can be configured by users,
 
 For logging into the website use the following credentials,
 
-**Username:**
+**Username: adriancorey@outlook.com**
 
-**Password:**
+**Password: Adrian123$**
 
 ## Links
 
 Listed below are the links for the server, video pitch, and demonstration videos for the project
 
-* [Server](http://ec2-3-144-2-15.us-east-2.compute.amazonaws.com:3000)
+* [Server](http://ec2-3-144-2-15.us-east-2.compute.amazonaws.com:3000](http://ec2-3-137-163-56.us-east-2.compute.amazonaws.com:3000/index.html)
 * [Pitch]()
 * [Demonstrations]()
 
