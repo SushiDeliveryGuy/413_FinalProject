@@ -76,8 +76,9 @@ This endpoint retrieves status information for a specified device based on its d
 * Parameters:
    * deviceID (Query Parameter, required): The unique identifier of the device.
 * Example Request:
+```
 GET /lab/status?deviceID=yourDeviceID
-
+```
 **Responses**
 * Success: '200 OK'
 * Error: '400 Bad Request', '500 Internal Server Error'
@@ -99,6 +100,7 @@ This endpoint retrieves status information for a specified device based on its d
    * deviceID (required): The unique identifier of the device.
    * apikey (required): The API key for authentication.
 * Example Request:
+```
 POST /lab/register
 Content-Type: application/json
 
@@ -108,7 +110,7 @@ Content-Type: application/json
   "deviceID": "yourDeviceID",
   "apikey": "yourAPIKey"
 }
-
+```
 **Responses**
 * Success: '201 Created'
 * Error: '400 Bad Request', '500 Internal Server Error'
