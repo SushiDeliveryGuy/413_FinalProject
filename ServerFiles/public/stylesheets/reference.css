@@ -1,0 +1,18 @@
+#main {
+    color: white;
+    background-color: rgb(136, 9, 9);
+    font-size: 20pt;
+    text-align: center;
+    border-radius: 10px;
+    border-width: 15px;
+    padding: 10px;
+    padding-left: 40px;
+    display: flex;
+    align-items: center;
+}
+
+#LOGO {
+    display: flex;
+    margin-left: auto;
+        padding-right: 10px;
+}
