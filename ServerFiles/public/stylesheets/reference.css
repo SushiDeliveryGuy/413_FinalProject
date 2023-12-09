@@ -16,3 +16,15 @@
     margin-left: auto;
         padding-right: 10px;
 }
+
+.footer-text{
+    position: fixed;
+    bottom: 0;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+    margin-left: -10px;
+    margin-right: -10px;
+}
