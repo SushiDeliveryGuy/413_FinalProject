@@ -15,6 +15,7 @@ tablet, and mobile device.
 -[Usage](#usage)
 -[Features](#features)
 -[Configuration](#configuration)
+-[Endpoint Documentation](#endpointdocumentation)
 -[Credentials](#credentials)
 -[Links](#links)
 -[License](#lincense)
@@ -62,6 +63,59 @@ The following can be configured by users,
 * **Measurement Timing:** Set the time of day the measurments will be taken
 * **Measurement Rate:** Define the frequency that the measurements should be taken at
 
+## Endpoint Documentation
+
+**1. /lab/status**
+
+**Description**
+This endpoint retrieves status information for a specified device based on its deviceID.
+
+**Request**
+* Method: GET
+* URL: /lab/status
+* Parameters:
+   * deviceID (Query Parameter, required): The unique identifier of the device.
+* Example Request:
+GET /lab/status?deviceID=yourDeviceID
+
+**Responses**
+* Success: '200 OK'
+* Error: '400 Bad Request', '500 Internal Server Error'
+
+**Authentication**
+*No authentication is required for this endpoint.
+
+**2. /lab/register**
+
+**Description**
+This endpoint retrieves status information for a specified device based on its deviceID.
+
+**Request**
+* Method: POST
+* URL: /lab/register
+* Parameters:
+   * date (required): The date of the recorded data entry.
+   * heartRate (required): The heart rate value associated with the recorded data.
+   * deviceID (required): The unique identifier of the device.
+   * apikey (required): The API key for authentication.
+* Example Request:
+POST /lab/register
+Content-Type: application/json
+
+{
+  "date": "2023-12-08T12:34:56Z",
+  "heartRate": 75,
+  "deviceID": "yourDeviceID",
+  "apikey": "yourAPIKey"
+}
+
+**Responses**
+* Success: '201 Created'
+* Error: '400 Bad Request', '500 Internal Server Error'
+
+**Authentication**
+* This endpoint requires authentication using an API key (apikey).
+
 ## Credentials
 
 For logging into the website use the following credentials,
@@ -74,8 +128,8 @@ For logging into the website use the following credentials,
 
 Listed below are the links for the server, video pitch, and demonstration videos for the project
 
-* [Server](http://ec2-3-144-2-15.us-east-2.compute.amazonaws.com:3000](http://ec2-3-137-163-56.us-east-2.compute.amazonaws.com:3000/index.html)
-* [Pitch]()
+* [Server](http://ec2-3-137-163-56.us-east-2.compute.amazonaws.com:3000/index.html)
+* [Pitch](https://www.youtube.com/watch?v=F-mU8SEipb4)
 * [Demonstrations]()
 
 ## License
