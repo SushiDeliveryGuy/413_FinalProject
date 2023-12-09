@@ -79,6 +79,7 @@ This endpoint retrieves status information for a specified device based on its d
 ```
 GET /lab/status?deviceID=yourDeviceID
 ```
+
 **Responses**
 * Success: '200 OK'
 * Error: '400 Bad Request', '500 Internal Server Error'
@@ -111,12 +112,128 @@ Content-Type: application/json
   "apikey": "yourAPIKey"
 }
 ```
+
 **Responses**
 * Success: '201 Created'
 * Error: '400 Bad Request', '500 Internal Server Error'
 
 **Authentication**
 * This endpoint requires authentication using an API key (apikey).
+
+**3. /users/signUp**
+
+**Description**
+This endpoint is used to register a new user. It checks if the provided username already exists. 
+If not, it creates a new user account and returns a success message. The password is hashed before being stored in the database.
+
+**Request**
+* Method: POST
+* URL: /users/signUp
+* Parameters:
+   * username (required): The desired username for the new user.
+   * password (required): The password for the new user.
+* Example Request:
+```
+POST /users/signUp
+Content-Type: application/json
+
+{
+  "username": "newUser",
+  "password": "securePassword"
+}
+```
+
+**Responses**
+* Success: '201 Created'
+* Error: '400 Bad Request', '401 Unauthorized'
+
+**Authentication**
+* No authentication is required for this endpoint.
+
+**4. /users/logIn**
+
+**Description**
+This endpoint allows users to log in by providing their username and password. It verifies the credentials, generates a JWT token upon successful authentication, and updates the user's last access time.
+
+**Request**
+* Method: POST
+* URL: /users/logIn
+* Parameters:
+   * username (required): The desired username for the new user.
+   * password (required): The password for the new user.
+* Example Request:
+```
+POST /users/logIn
+Content-Type: application/json
+
+{
+  "username": "existingUser",
+  "password": "password123"
+}
+```
+
+**Responses**
+* Success: '201 Created'
+* Error: '401 Unauthorized'
+
+**Authentication**
+* No authentication is required for this endpoint.
+
+**5. /users/changePassword**
+
+**Description**
+This endpoint allows users to change their password by providing their username and the new password.
+
+**Request**
+* Method: PUT
+* URL: /users/changePassword
+* Parameters:
+   * username (required): The desired username for the new user.
+   * password (required): The password for the new user.
+* Example Request:
+```
+PUT /users/changePassword
+Content-Type: application/json
+
+{
+  "username": "existingUser",
+  "newPassword": "newSecurePassword"
+}
+```
+
+**Responses**
+* Success: '201 Created'
+* Error: '401 Unauthorized', '400 Bad Request', '500 Internal Server Error'
+
+**Authentication**
+* No authentication is required for this endpoint.
+
+**6. users/updateDevices**
+
+**Description**
+This endpoint allows users to update information about their devices by providing their username.
+
+**Request**
+* Method: PUT
+* URL: /users/updateDevices
+* Parameters:
+   * username (required): The desired username for the new user.
+* Example Request:
+```
+PUT /users/updateDevices
+Content-Type: application/json
+
+{
+  "username": "existingUser",
+}
+```
+
+**Responses**
+* Success: '200 OK'
+* Error: '401 Unauthorized', '400 Bad Request', '500 Internal Server Error'
+
+**Authentication**
+* No authentication is required for this endpoint.
 
 ## Credentials
 
