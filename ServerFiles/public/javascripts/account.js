@@ -1,13 +1,5 @@
 // public/javascripts/account.js
 $(function (){
-    // TODO: registering the device and saving the name into "ID"
-    // $('#registerDevice').on('click', function() {
-    //
-    //     deviceOptions(ID);
-    // });
-
-    //$('deviceID').onChange(/*TODO: function to update Weekly and Daily View for device*/);
-    //$('calendar').onChange(/*TODO: function to update Weekly and Daily view for date change*/);
     const storedDevicesString = localStorage.getItem('devices') || '';
     
     // Split the string into an array of device IDs using commas
